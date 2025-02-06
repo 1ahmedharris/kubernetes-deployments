@@ -1,5 +1,5 @@
 # Start with a lightweight base image
-FROM debian:bullseye-slim
+FROM nginx:alpine
 
 # Install nginx and required dependencies
 RUN apt-get update && apt-get install -y \
