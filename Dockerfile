@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy your frontend source code
-COPY ./frontend/ /usr/share/nginx/html/
+COPY . /usr/share/nginx/html/
 
 # Copy nginx configuration
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf
