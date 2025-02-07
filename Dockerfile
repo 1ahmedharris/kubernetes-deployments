@@ -2,10 +2,10 @@
 FROM nginx:alpine
 
 # Install nginx and required dependencies
-RUN apt-get update && apt-get install -y \
-    nginx \
-    && rm -rf /var/lib/apt/lists/*
-
+RUN apt-get update && apt-get install -y nginx \
+ && apt-get clean \  
+ && rm -rf /var/lib/apt/lists/*
+ 
 # Copy your frontend source code
 COPY . /usr/share/nginx/html/
 
