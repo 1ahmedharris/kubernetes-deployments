@@ -11,13 +11,12 @@ on:
 jobs:
   run-container:
     runs-on: ubuntu-latest
-
+    steps:
     # Step 1: Check out repository code
     - name: Checkout code
       uses: actions/checkout@v4
 
-    steps:
-    # Step 1: Configure AWS security credentials
+    # Step 2: Configure AWS security credentials
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v4
       with:
@@ -25,7 +24,7 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ secrets.AWS_REGION }}
 
-    # Step 4: Build, tag, then push Docker image to AWS ECR
+    # Step 2: Build, tag, then push Docker image to AWS ECR
     - name: Build, tag, and push image to AWS ECR
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
@@ -36,19 +35,19 @@ jobs:
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         
-    # Step 2: Setup SSH agent Login
+    # Step 4: Setup SSH agent Login
     - name: Set up SSH
       uses: webfactory/ssh-agent@v0.9.0
       with:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-    # Add EC2 host to known hosts
+    # Step 5: Add EC2 host to known hosts
     - name: Add EC2 host to known hosts
       run: |
         mkdir -p ~/.ssh
         ssh-keyscan -H ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
 
-    # Step 4: Run Container
+    # Step 6: Run Container
     - name: Deploy image to EC2
       env:
         ECR_REGISTRY: ${{ secrets.ECR_REGISTRY }}
