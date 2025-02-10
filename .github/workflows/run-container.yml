@@ -11,6 +11,7 @@ on:
 jobs:
   run-container:
     runs-on: ubuntu-latest
+    
     steps:
     # Step 1: Check out repository code
     - name: Checkout code
@@ -31,7 +32,7 @@ jobs:
         ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
         IMAGE_TAG: latest             
       run: |
-        cd python-flask-app/flask-app
+        cd /flask-app
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         
