@@ -1,4 +1,4 @@
-name: Build Image & Run Container on EC2
+name: Upload Image & Run Container on EC2
 
 on:
   push:
@@ -9,9 +9,8 @@ on:
       - main
 
 jobs:
-  run-container:
+  upload-image:
     runs-on: ubuntu-latest
-    
     steps:
     # Step 1: Check out repository code
     - name: Checkout code
@@ -40,21 +39,33 @@ jobs:
         cd flask-app
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+
+
+  run-container:
+    runs-on: ubuntu-latest
+    steps:
+    # Step 1: Configure AWS security credentials
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ secrets.AWS_REGION }}
         
-    # Step 5: Setup SSH agent Login
+    # Step 2: Setup SSH agent Login
     - name: Set up SSH
       uses: webfactory/ssh-agent@v0.9.0
       with:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-    # Step 6: Add EC2 host to known hosts
+    # Add EC2 host to known hosts
     - name: Add EC2 host to known hosts
       run: |
         mkdir -p ~/.ssh
         ssh-keyscan -H ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
-
-    # Step 7: Run Container
-    - name: Deploy Container to EC2
+        
+    # Step 4: Run Container
+    - name: Deploy image to EC2
       env:
         ECR_REGISTRY: ${{ secrets.ECR_REGISTRY }}
         ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
@@ -66,7 +77,6 @@ jobs:
         ssh ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} "
           # Login to ECR
           aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $ECR_REGISTRY
-
           # Stop and remove existing container if it exists
           docker stop my-container || true
           docker rm my-container || true
