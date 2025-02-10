@@ -12,6 +12,10 @@ jobs:
   run-container:
     runs-on: ubuntu-latest
 
+    # Step 1: Check out repository code
+    - name: Checkout code
+      uses: actions/checkout@v4
+
     steps:
     # Step 1: Configure AWS security credentials
     - name: Configure AWS credentials
