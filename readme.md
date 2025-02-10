@@ -1,6 +1,6 @@
 # Automated-Docker-Container-Builder
 ## Overview
-This repository demonstrates contanerizing a simple "Hello World" Python Flask app &using GitHub Actions workflows to automate deploying the contanerized app onto an EC2 instance. 
+This repository demonstrates contanerizing a simple "Hello World" Python Flask app &using GitHub Actions workflows to automate deploying the app onto an EC2 instance. 
 ## Features
 - Dockerfile:
 Builds lightweight Docker image for the application.  
