@@ -9,8 +9,8 @@ Builds lightweight Docker image for the application.
 ## Getting Started
 ## 1. Clone Repository
 - Clone the Repository.   
-git clone  https://github.com/1ahmedharris/docker-container-builder.git  
-cd docker-container-builder  
+git clone  https://github.com/1ahmedharris/python-flask-app.git  
+cd python-flask-app  
 - Build and Run Locally.   
 docker build -t app .    
 - Run Docker container.  
