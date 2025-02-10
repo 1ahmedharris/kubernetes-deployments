@@ -1,6 +1,6 @@
 # Automated-Docker-Container-Builder
 ## Overview
-Automating building Docker Containers. 
+Automating Running Docker Containers. 
 This repository demonstrates building Docker images into containers then, using GitHub Actions workflows to automate deploying Docker containers onto an EC2 instance. 
 ## Features
 - Dockerfile:
