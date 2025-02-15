@@ -1,0 +1,6 @@
+.dockerignore
+app.py
+readme.md
+.Dockerfile
+requirements.txt
+test.py
