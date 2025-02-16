@@ -1,10 +1,10 @@
-# Automated-Docker-Container-Builder
+# Flask-App-Kubernetes-Deployments
 ## Overview
-This repository demonstrates contanerizing a simple "Hello World" Python Flask app & using GitHub Actions CI/CD pipeline to automate deploying the app onto an EC2 instance. 
+This repository demonstrates contanerizing a simple "Hello World" Python Flask app & using GitHub Actions CI/CD pipelines to automate oulling the image from AWS ECR, then deploying the app onto an AWS EKS cluster. 
 ## Features
 - Dockerfile:
 Builds lightweight Docker image for the application.  
-- GitHub Actions CI/CD pipeline run-container.yml: <br> 1st job automates building, tagging, then pushing Docker images to AWS ECR. <br> 2nd job automates pulling images from AWS ECR, then running Docker container on an EC2 instance.  
+- GitHub Actions CI/CD pipeline run-container.yml: <br> 1st job automates building, tagging, then pushing Docker images to AWS ECR. <br> 2nd job automates pulling images from AWS ECR, then running Docker container on an AWS EKS cluster..  
 ## Getting Started
 ## 1. Clone Repository
 - Clone the Repository.   
