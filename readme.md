@@ -1,6 +1,6 @@
 # Flask-App-Kubernetes-Deployments
 ## Overview
-This repository demonstrates contanerizing a simple "Hello World" Python Flask app & using GitHub Actions CI/CD pipelines to automate oulling the image from AWS ECR, then deploying the app onto an AWS EKS cluster. 
+This repository demonstrates contanerizing a simple "Hello World" Python Flask app & using GitHub Actions CI/CD pipelines to automate pulling the image from AWS ECR, then deploying the app onto an AWS EKS cluster. 
 ## Features
 - Dockerfile:
 Builds lightweight Docker image for the application.  
