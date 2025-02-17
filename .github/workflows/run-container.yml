@@ -21,7 +21,7 @@ jobs:
         aws-region: us-east-1
 
     - name: Update kube config
-      run: aws eks update-kubeconfig --name aitc-cluster --region us-east-1
+      run: aws eks update-kubeconfig --name new-cluster --region us-east-1
 
     - name: Deploy to EKS 
       run: |
