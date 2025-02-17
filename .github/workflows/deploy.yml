@@ -52,6 +52,7 @@ jobs:
     # Step 2: Update Kube config
     - name: Update kube config
       run: aws eks update-kubeconfig --name $EKS_CLUSTER --region $AWS_REGION
+    
     # Deploy app to AWS EKS
     - name: Deploy to EKS 
       env:
