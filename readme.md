@@ -4,7 +4,7 @@ This repository demonstrates contanerizing a simple "Hello World" Python Flask a
 ## Features
 - Dockerfile:
 Builds lightweight Docker image for the application.  
-- GitHub Actions CI/CD pipeline run-container.yml: <br> 1st job automates building, tagging, then pushing Docker images to AWS ECR. <br> 2nd job automates pulling images from AWS ECR, then running app on an AWS EKS cluster.  
+- GitHub Actions CI/CD pipeline deploy.yml: <br> 1st job automates building, tagging, then pushing Docker images to AWS ECR. <br> 2nd job automates pulling images from AWS ECR, then running app on an AWS EKS cluster.  
 ## Getting Started
 ## 1. Clone Repository
 - Clone the Repository.   
