@@ -40,7 +40,6 @@ jobs:
   deploy:
     name: Deployment
     runs-on: ubuntu-latest
-
     steps:
     # Step 1: Configure AWS credentials
     - name: Configure AWS credentials
