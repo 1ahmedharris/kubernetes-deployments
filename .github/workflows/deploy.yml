@@ -61,5 +61,5 @@ jobs:
         AWS_REGION: ${{ secrets.AWS_REGION }}
 
       run: |
-        kubectl apply -f deployments.yaml 
-        kubectl apply -f node-service.yaml
+        kubectl apply -f deployments.yml 
+        kubectl apply -f node-service.yml
